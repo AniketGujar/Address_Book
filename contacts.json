@@ -1,1 +1,74 @@
-{"Person":[{"firstName":"Aniket","Name":"Gujar","address":"Shukrawar Peth","city":"Satara","state":"Maharashtra","pinCode":401552,"phoneNumber":9561237890,"email":"aniketgujar@gmail.com"},{"FirstName":"Ganesh","lastName":"Chavan","address":"Safa","city":"Satara","state":"Man","pinCode":"456213","phoneNumber":"7894561230","email":"adaf@ffad.com"}]}
+{
+    "Person": [
+        {
+            "firstName": "Aniket",
+            "lastName": "Gujar",
+            "address": "Shukrawar",
+            "city": "Satara",
+            "state": "Maharashtra",
+            "pinCode": "401552",
+            "phoneNumber": "9561237890",
+            "email": "aniketgujar@gmail.com"
+        },
+        {
+            "firstName": "Ganesh",
+            "lastName": "Chavan",
+            "address": "Rajwada",
+            "city": "Satara",
+            "state": "Assam",
+            "pinCode": "456213",
+            "phoneNumber": "7894561230",
+            "email": "adaf@gmail.com"
+        },
+        {
+            "firstName": "Tejas",
+            "lastName": "Kadam",
+            "address": "Powai Naka",
+            "city": "Kolhapur",
+            "state": "Maharashtra",
+            "pinCode": "423512",
+            "phoneNumber": "7894561302",
+            "email": "tejkadam@gmail.com"
+        },
+        {
+            "firstName": "Pratik",
+            "lastName": "Mhetre",
+            "address": "ASad",
+            "city": "Sataea",
+            "state": "Gujrat",
+            "pinCode": "556465",
+            "phoneNumber": "15616511",
+            "email": "asdfd@fafdg.ffa"
+        },
+        {
+            "firstName": "Ajinkya",
+            "lastName": "Karanjkar",
+            "address": "Mangalwar",
+            "city": "Jodhpur",
+            "state": "Rajsathan",
+            "pinCode": "756134",
+            "phoneNumber": "7896541230",
+            "email": "ajinkyakar@gmail.com"
+        },
+        {
+            "firstName": "Amit",
+            "lastName": "Mane",
+            "address": "Babewadi",
+            "city": "Gadag",
+            "state": "Karnatak",
+            "pinCode": "789456",
+            "phoneNumber": "9874563210",
+            "email": "amitmane@gmail.com"
+        },
+        {
+            "firstName": "Suraj",
+            "lastName": "Shingate",
+            "address": "Sahupuri",
+            "city": "Pune",
+            "state": "Delhi",
+            "pinCode": "945612",
+            "phoneNumber": "1234567890",
+            "email": "surajshingat@google.co.in"
+        }
+    ]
+}
