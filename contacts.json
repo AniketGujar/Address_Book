@@ -34,7 +34,7 @@
             "firstName": "Pratik",
             "lastName": "Mhetre",
             "address": "Kondave",
-            "city": "Sataea",
+            "city": "Satara",
             "state": "Gujrat",
             "pinCode": "556465",
             "phoneNumber": "15616511",
@@ -69,6 +69,16 @@
             "pinCode": "945612",
             "phoneNumber": "1234567890",
             "email": "surajshingat@google.co.in"
+        },
+        {
+            "firstName": "Vikram",
+            "lastName": "Shinde",
+            "address": "Bhondvade",
+            "city": "Pune",
+            "state": "Odisha",
+            "pinCode": "654789",
+            "phoneNumber": "7894561230",
+            "email": "vikshinde@gmail.com"
         }
     ]
 }

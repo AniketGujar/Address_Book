@@ -139,6 +139,39 @@ class AddressBook {
         obj.splice(contactToDelete,1);
         fs.writeFileSync('contacts.json', JSON.stringify(data));
     }
+
+    findContact=()=>{
+        let choice =parseInt(readlineSync.question('What you want to find >> \t1.First Name\t2.Last Name\t3.City\t4.State: '));
+        let userChoice =readlineSync.question('Enter word to find: ');
+        let find;
+        switch(choice){
+            case 1:
+                find = obj.filter(find => find.firstName == userChoice );
+            break;
+            case 2:
+                find = obj.filter(find => find.lastName == userChoice );
+            break;
+            case 3:
+                find = obj.filter(find => find.city == userChoice );
+            break;
+            case 4:
+                find = obj.filter(find => find.state == userChoice );
+            break;
+            default:
+                console.log("Invalid Input!!");
+            break;
+        }
+        
+        let count = 1;
+        console.log("--------------------------------------------------------------Address Book Data-----------------------------------------------------------------")
+        console.log(`|Sr.|First Name  Last Name  \t|   Address\t|   City \t|   State\t|   Pin Code\t|  Phone No.\t| \tEmail-Id\t    |`);
+
+        find.forEach(function (contact) {
+            console.log(`| ${count} | ${contact.firstName}  \t ${contact.lastName}   \t| ${contact.address}  \t| ${contact.city}   \t| ${contact.state}  \t| ${contact.pinCode}  \t| ${contact.phoneNumber} \t| ${contact.email}\t    |`);
+            count++;
+        });
+        console.log("------------------------------------------------------------------------------------------------------------------------------------------------")
+    }
 }
 
 module.exports = new AddressBook;

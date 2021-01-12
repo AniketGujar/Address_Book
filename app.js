@@ -4,7 +4,7 @@ const app = require('./main');
 let option = "Y";
 
 while (option == "Y") {
-    switch (readlineSync.question("1.Add Contact    \t2.View Contact    \t3.Update Contact  \t4.Delete Contact      \t5.Exit\n")) {
+    switch (readlineSync.question("1.Add Contact    \t2.View Contact    \t3.Update Contact  \t4.Delete Contact      \t5.Find        \t6.Exit\n")) {
         case "1":
             app.addPerson();
             break;
@@ -18,6 +18,9 @@ while (option == "Y") {
             app.deleteContact();
             break;
         case "5":
+            app.findContact();
+            break;
+        case "6":
             option = "N";
             break;
         default:
