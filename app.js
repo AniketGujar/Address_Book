@@ -1,10 +1,10 @@
-console.log("!!.........Welcome to Address Book System.........!!");
+console.log("\t\t\t\t\t!!-------Welcome to Address Book System--------!!\n");
 const readlineSync = require('readline-sync');
 const app = require('./main');
 let option = "Y";
 
 while (option == "Y") {
-    switch (readlineSync.question("1.Add Contact    \t2.View Contact    \t3.Update Contact  \t4.Exit\n")) {
+    switch (readlineSync.question("1.Add Contact    \t2.View Contact    \t3.Update Contact  \t4.Delete Contact      \t5.Exit\n")) {
         case "1":
             app.addPerson();
             break;
@@ -15,7 +15,14 @@ while (option == "Y") {
             app.updateContact();
             break;
         case "4":
+            app.deleteContact();
+            break;
+        case "5":
             option = "N";
             break;
+        default:
+            console.log("Invalid Input!!");
     }
 }
+
+console.log("\t\t\t\t\t-----Thank you for using AddressBook-----");

@@ -133,6 +133,12 @@ class AddressBook {
 
         });
     }
+
+    deleteContact=()=>{
+        let contactToDelete=parseInt(readlineSync.question('Enter the Row Number to be deleted: '))-1;
+        obj.splice(contactToDelete,1);
+        fs.writeFileSync('contacts.json', JSON.stringify(data));
+    }
 }
 
 module.exports = new AddressBook;
