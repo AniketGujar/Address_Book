@@ -3,6 +3,7 @@ const fs = require('fs');
 
 const fileread = fs.readFileSync('./contacts.json');
 const data = JSON.parse(fileread);
+let obj = data.Person;
 
 class AddressBook {
 
@@ -77,7 +78,6 @@ class AddressBook {
     }
 
     viewContact = () => {
-        let obj = data.Person;
         let count = 1;
         console.log("--------------------------------------------------------------Address Book Data-----------------------------------------------------------------")
         console.log(`|Sr.|First Name  Last Name  \t|   Address\t|   City \t|   State\t|   Pin Code\t|  Phone No.\t| \tEmail-Id\t    |`);
@@ -87,6 +87,51 @@ class AddressBook {
             count++;
         });
         console.log("------------------------------------------------------------------------------------------------------------------------------------------------")
+    }
+
+    updateContact = () => {
+        let count = 1;
+        let updatefield = parseInt(readlineSync.question('Enter a Number (SR.No) to update Contact: '));
+        let row = parseInt(readlineSync.question('Enter Number: 1.First Name\t2.Last Name\t3.Address\t4.City\t5.State\t6.Pin Code\t7.Phone No.\t8.Email-Id :'));
+        let change = readlineSync.question('Enter Changes: ');
+
+        obj.forEach(function (contact) {
+
+            if (updatefield == count) {
+                switch (row) {
+                    case 1:
+                        contact.firstName = change;
+                        break;
+                    case 2:
+                        contact.lastName = change;
+                        break;
+                    case 3:
+                        contact.address = change;
+                        break;
+                    case 4:
+                        contact.city = change;
+                        break;
+                    case 5:
+                        contact.state = change;
+                        break;
+                    case 6:
+                        contact.pinCode = change;
+                        break;
+                    case 7:
+                        contact.phoneNumber = change;
+                        break;
+                    case 8:
+                        contact.email = change;
+                        break;
+                    default:
+                        console.log("Invalid Input...!!");
+                        break;
+                }
+                fs.writeFileSync('contacts.json', JSON.stringify(data));
+            }
+            count++;
+
+        });
     }
 }
 
