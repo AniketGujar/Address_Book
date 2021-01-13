@@ -32,7 +32,7 @@ class AddressBook {
             phoneNumber: phoneNumber,
             email: email
         });
-        fs.writeFileSync('contacts.json', JSON.stringify(data));
+        this.writeDataToJsonFile();
         console.log("\n");
     }
 
@@ -127,41 +127,44 @@ class AddressBook {
                         console.log("Invalid Input...!!");
                         break;
                 }
-                fs.writeFileSync('contacts.json', JSON.stringify(data));
+                this.writeDataToJsonFile();
             }
             count++;
-
         });
     }
 
-    deleteContact=()=>{
-        let contactToDelete=parseInt(readlineSync.question('Enter the Row Number to be deleted: '))-1;
-        obj.splice(contactToDelete,1);
+    writeDataToJsonFile = () => {
         fs.writeFileSync('contacts.json', JSON.stringify(data));
     }
 
-    findContact=()=>{
-        let choice =parseInt(readlineSync.question('What you want to find >> \t1.First Name\t2.Last Name\t3.City\t4.State: '));
-        let userChoice =readlineSync.question('Enter word to find: ');
+    deleteContact = () => {
+        let contactToDelete = parseInt(readlineSync.question('Enter the Row Number to be deleted: ')) - 1;
+        obj.splice(contactToDelete, 1);
+        this.writeDataToJsonFile();
+    }
+
+    findContact = () => {
+        let choice = parseInt(readlineSync.question('What you want to find >> \t1.First Name\t2.Last Name\t3.City\t4.State: '));
+        let userChoice = readlineSync.question('Enter word to find: ');
         let find;
-        switch(choice){
+        switch (choice) {
             case 1:
-                find = obj.filter(find => find.firstName == userChoice );
-            break;
+                find = obj.filter(find => find.firstName == userChoice);
+                break;
             case 2:
-                find = obj.filter(find => find.lastName == userChoice );
-            break;
+                find = obj.filter(find => find.lastName == userChoice);
+                break;
             case 3:
-                find = obj.filter(find => find.city == userChoice );
-            break;
+                find = obj.filter(find => find.city == userChoice);
+                break;
             case 4:
-                find = obj.filter(find => find.state == userChoice );
-            break;
+                find = obj.filter(find => find.state == userChoice);
+                break;
             default:
                 console.log("Invalid Input!!");
-            break;
+                break;
         }
-        
+
         let count = 1;
         console.log("--------------------------------------------------------------Address Book Data-----------------------------------------------------------------")
         console.log(`|Sr.|First Name  Last Name  \t|   Address\t|   City \t|   State\t|   Pin Code\t|  Phone No.\t| \tEmail-Id\t    |`);
@@ -171,6 +174,54 @@ class AddressBook {
             count++;
         });
         console.log("------------------------------------------------------------------------------------------------------------------------------------------------")
+    }
+
+    sortContacts() {
+        let sortByChoice = parseInt(readlineSync.question('Enter Number to Sort By: 1.First Name\t2.Last Name\t3.Address\t4.City\t5.State\t6.Pin Code\t7.Phone No.\t8.Email-Id :'));
+        let sortBy;
+        switch (sortByChoice) {
+            case 1:
+                sortBy = "firstName";
+                break;
+            case 2:
+                sortBy = "lastName";
+                break;
+            case 3:
+                sortBy = "address";
+                break;
+            case 4:
+                sortBy = "city";
+                break;
+            case 5:
+                sortBy = "state";
+                break;
+            case 6:
+                sortBy = "pinCode";
+                break;
+            case 7:
+                sortBy = "phoneNumber";
+                break;
+            case 8:
+                sortBy = "email";
+                break;
+            default:
+                console.log("Invalid Input...!!");
+                break;
+        }
+
+        function getSortOrder(contact) {
+            return function (a, b) {
+                if (a[contact] > b[contact]) {
+                    return 1;
+                } else if (a[contact] < b[contact]) {
+                    return -1;
+                }
+                return 0;
+            }
+        }
+
+        obj.sort(getSortOrder(sortBy));
+        this.viewContact();
     }
 }
 

@@ -37,8 +37,8 @@
             "city": "Satara",
             "state": "Gujrat",
             "pinCode": "556465",
-            "phoneNumber": "15616511",
-            "email": "asdfd@fafdg.ffa"
+            "phoneNumber": "8698789412",
+            "email": "pratikmhetre@gamil.com"
         },
         {
             "firstName": "Ajinkya",
@@ -79,6 +79,16 @@
             "pinCode": "654789",
             "phoneNumber": "7894561230",
             "email": "vikshinde@gmail.com"
+        },
+        {
+            "firstName": "Souvik",
+            "lastName": "Mondal",
+            "address": "Asdsdf",
+            "city": "Solhapur",
+            "state": "Assam",
+            "pinCode": "789456",
+            "phoneNumber": "7894561230",
+            "email": "souvik@google.com"
         }
     ]
 }
