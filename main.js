@@ -4,6 +4,8 @@ const fs = require('fs');
 const fileread = fs.readFileSync('./contacts.json');
 const data = JSON.parse(fileread);
 let obj = data.Person;
+let contactDetails = "", email = "", userPinCode = "", mobileNum = "";
+let numOfContacts = 0;
 
 class AddressBook {
 
@@ -38,7 +40,7 @@ class AddressBook {
 
     contactValidation = () => {
         let contactDetailsPattern = /^[A-Z]+[a-zA-Z]{2,}$/;
-        let contactDetails = readlineSync.question('');
+        contactDetails = readlineSync.question('');
         const result = contactDetails.match(contactDetailsPattern);
         if (result == null) {
             console.log("Input Invalid..!! >> (Starts with capital, Min 4 char)");
@@ -46,9 +48,10 @@ class AddressBook {
         }
         return contactDetails;
     }
+
     pinCode = () => {
-        let pinCodePattern = /^([1-9]?[0-9]{5})$/;
-        let userPinCode = readlineSync.question('Enter your Pincode: ');
+        let pinCodePattern = /^([1-9]+[0-9]{5})$/;
+        userPinCode = readlineSync.question('Enter your Pincode: ');
         const result = userPinCode.match(pinCodePattern);
         if (result == null) {
             console.log("Please Enter 6 digit code: ");
@@ -56,9 +59,10 @@ class AddressBook {
         }
         return userPinCode;
     }
+
     userEmail = () => {
         let emailPattern = /^([a-z]+[0-9a-z-!$%+&_.]*){3,15}@[a-z0-9]{1,8}[.]*([a-z]{2,4})*.[a-z]{2,4}$/;
-        let email = readlineSync.question('Enter your Email-Id: ');
+        email = readlineSync.question('Enter your Email-Id: ');
         const result = email.match(emailPattern);
         if (result == null) {
             console.log("Please Enter Valid Email ");
@@ -66,12 +70,13 @@ class AddressBook {
         }
         return email;
     }
+
     mobileNumber = () => {
-        let mobileNumPattern = /^([1-9]?[0-9]{9})$/;
-        let mobileNum = readlineSync.question('Enter your Mobile Number: ');
+        let mobileNumPattern = /^([1-9]+[0-9]{9})$/;
+        mobileNum = readlineSync.question('Enter your Mobile Number: ');
         const result = mobileNum.match(mobileNumPattern);
         if (result == null) {
-            console.log("Please Enter Mobile Number (Country Code <Space> Number)");
+            console.log("Please Enter Mobile Number (10 Digit Number)");
             this.mobileNumber();
         }
         return mobileNum;
@@ -89,48 +94,61 @@ class AddressBook {
         console.log("------------------------------------------------------------------------------------------------------------------------------------------------")
     }
 
+    numberOfContactsInAddressBook = () => {
+        obj.forEach(function (contact) {
+            numOfContacts++
+        });
+    }
+
     updateContact = () => {
         let count = 1;
         let updatefield = parseInt(readlineSync.question('Enter a Number (SR.No) to update Contact: '));
         let row = parseInt(readlineSync.question('Enter Number: 1.First Name\t2.Last Name\t3.Address\t4.City\t5.State\t6.Pin Code\t7.Phone No.\t8.Email-Id :'));
-        let change = readlineSync.question('Enter Changes: ');
+        this.numberOfContactsInAddressBook();
+        console.log(numOfContacts + " " + row)
+        let v = this
+        if (numOfContacts >= updatefield && 8 >= row) {
 
-        obj.forEach(function (contact) {
+            obj.forEach(function (contact) {
 
-            if (updatefield == count) {
-                switch (row) {
-                    case 1:
-                        contact.firstName = change;
-                        break;
-                    case 2:
-                        contact.lastName = change;
-                        break;
-                    case 3:
-                        contact.address = change;
-                        break;
-                    case 4:
-                        contact.city = change;
-                        break;
-                    case 5:
-                        contact.state = change;
-                        break;
-                    case 6:
-                        contact.pinCode = change;
-                        break;
-                    case 7:
-                        contact.phoneNumber = change;
-                        break;
-                    case 8:
-                        contact.email = change;
-                        break;
-                    default:
-                        console.log("Invalid Input...!!");
-                        break;
+                if (updatefield == count) {
+                    switch (row) {
+                        case 1:
+                            contact.firstName = v.contactValidation;
+                            break;
+                        case 2:
+                            contact.lastName = v.contactValidation;
+                            break;
+                        case 3:
+                            contact.address = v.contactValidation;
+                            break;
+                        case 4:
+                            contact.city = v.contactValidation;
+                            break;
+                        case 5:
+                            contact.state = v.contactValidation;
+                            break;
+                        case 6:
+                            contact.pinCode = v.pinCode();
+                            break;
+                        case 7:
+                            contact.phoneNumber = v.mobileNumber();
+                            break;
+                        case 8:
+                            contact.email = v.userEmail();
+                            break;
+                        default:
+                            console.log("Invalid Input...!!");
+                            break;
+                    }
                 }
-                this.writeDataToJsonFile();
-            }
-            count++;
-        });
+                count++;
+            });
+        }
+        else {
+            console.log("Invalid Input...!!!");
+        }
+        this.writeDataToJsonFile();
     }
 
     writeDataToJsonFile = () => {

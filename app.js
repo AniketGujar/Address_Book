@@ -1,4 +1,4 @@
-console.log("\t\t\t\t\t!!-------Welcome to Address Book System--------!!\n");
+console.log("\t\t\t\t\t\t !!-------Welcome to Address Book System--------!!\n");
 const readlineSync = require('readline-sync');
 const app = require('./main');
 let option = "Y";
@@ -31,4 +31,4 @@ while (option == "Y") {
     }
 }
 
-console.log("\t\t\t\t\t-----Thank you for using AddressBook-----");
+console.log("\t\t\t\t\t\t   -----Thank you for using AddressBook-----");
