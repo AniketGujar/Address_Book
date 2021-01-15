@@ -35,7 +35,7 @@ class AddressBook {
             email: email
         });
         this.writeDataToJsonFile();
-        console.log("\n");
+        console.log("");
     }
 
     contactValidation = () => {
@@ -95,7 +95,7 @@ class AddressBook {
     }
 
     numberOfContactsInAddressBook = () => {
-        obj.forEach(function (contact) {
+        obj.forEach((contact) =>{
             numOfContacts++
         });
     }
@@ -105,37 +105,36 @@ class AddressBook {
         let updatefield = parseInt(readlineSync.question('Enter a Number (SR.No) to update Contact: '));
         let row = parseInt(readlineSync.question('Enter Number: 1.First Name\t2.Last Name\t3.Address\t4.City\t5.State\t6.Pin Code\t7.Phone No.\t8.Email-Id :'));
         this.numberOfContactsInAddressBook();
-        console.log(numOfContacts + " " + row)
-        let v = this
+
         if (numOfContacts >= updatefield && 8 >= row) {
 
-            obj.forEach(function (contact) {
+            obj.forEach((contact) => {
 
                 if (updatefield == count) {
                     switch (row) {
                         case 1:
-                            contact.firstName = v.contactValidation;
+                            contact.firstName = this.contactValidation();
                             break;
                         case 2:
-                            contact.lastName = v.contactValidation;
+                            contact.lastName = this.contactValidation();
                             break;
                         case 3:
-                            contact.address = v.contactValidation;
+                            contact.address = this.contactValidation();
                             break;
                         case 4:
-                            contact.city = v.contactValidation;
+                            contact.city = this.contactValidation();
                             break;
                         case 5:
-                            contact.state = v.contactValidation;
+                            contact.state = this.contactValidation();
                             break;
                         case 6:
-                            contact.pinCode = v.pinCode();
+                            contact.pinCode = this.pinCode();
                             break;
                         case 7:
-                            contact.phoneNumber = v.mobileNumber();
+                            contact.phoneNumber = this.mobileNumber();
                             break;
                         case 8:
-                            contact.email = v.userEmail();
+                            contact.email = this.userEmail();
                             break;
                         default:
                             console.log("Invalid Input...!!");
@@ -194,7 +193,7 @@ class AddressBook {
         console.log("------------------------------------------------------------------------------------------------------------------------------------------------")
     }
 
-    sortContacts() {
+    sortContacts=()=> {
         let sortByChoice = parseInt(readlineSync.question('Enter Number to Sort By: 1.First Name\t2.Last Name\t3.Address\t4.City\t5.State\t6.Pin Code\t7.Phone No.\t8.Email-Id :'));
         let sortBy;
         switch (sortByChoice) {
